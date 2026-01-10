@@ -145,11 +145,31 @@
                         <div class="flex-1">
                             <CardTitle class="text-3xl mb-2">{{ track.name }}</CardTitle>
                             <CardDescription class="text-lg mb-4">
-                                {{ track.artists.join(', ') }}
+                                <div class="flex flex-wrap gap-1">
+                                    <template v-if="track.artists_relation && track.artists_relation.length > 0">
+                                        <Link
+                                            v-for="(artist, index) in track.artists_relation"
+                                            :key="artist.id"
+                                            :href="edit().url + '?artist_id=' + artist.id"
+                                            class="text-primary hover:underline"
+                                        >
+                                            {{ artist.name }}<span v-if="index < track.artists_relation.length - 1">, </span>
+                                        </Link>
+                                    </template>
+                                    <span v-else>{{ track.artists.join(', ') }}</span>
+                                </div>
                             </CardDescription>
                             <div class="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                                <div v-if="track.album">
-                                    <span class="font-medium">Album:</span> {{ track.album }}
+                                <div v-if="track.album_relation || track.album">
+                                    <span class="font-medium">Album:</span>
+                                    <Link
+                                        v-if="track.album_relation"
+                                        :href="edit().url + '?album_id=' + track.album_relation.id"
+                                        class="text-primary hover:underline ml-1"
+                                    >
+                                        {{ track.album_relation.name }}
+                                    </Link>
+                                    <span v-else>{{ track.album }}</span>
                                 </div>
                                 <div>
                                     <span class="font-medium">Duration:</span> {{ formatDuration(track.duration_ms) }}

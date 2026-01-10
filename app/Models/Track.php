@@ -15,6 +15,7 @@ class Track extends Model
      */
     protected $fillable = [
         'user_id',
+        'album_id',
         'spotify_id',
         'name',
         'artists',
@@ -23,6 +24,23 @@ class Track extends Model
         'duration_ms',
         'spotify_url',
         'preview_url',
+        'bpm',
+        'camelot',
+        'energy',
+        'popularity',
+        'genres',
+        'parent_genres',
+        'dance',
+        'acoustic',
+        'instrumental',
+        'valence',
+        'speech',
+        'live',
+        'loud_db',
+        'key',
+        'time_signature',
+        'label',
+        'isrc',
     ];
 
     /**
@@ -34,6 +52,9 @@ class Track extends Model
     {
         return [
             'artists' => 'array',
+            'genres' => 'array',
+            'parent_genres' => 'array',
+            'loud_db' => 'decimal:2',
         ];
     }
 
@@ -43,6 +64,23 @@ class Track extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the album that this track belongs to.
+     */
+    public function albumRelation(): BelongsTo
+    {
+        return $this->belongsTo(Album::class, 'album_id');
+    }
+
+    /**
+     * Get the artists for this track.
+     */
+    public function artistsRelation(): BelongsToMany
+    {
+        return $this->belongsToMany(Artist::class, 'track_artist')
+            ->withTimestamps();
     }
 
     /**

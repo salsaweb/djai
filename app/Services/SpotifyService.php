@@ -97,7 +97,16 @@ class SpotifyService
             'spotify_id' => $trackData['id'],
             'name' => $trackData['name'],
             'artists' => array_map(fn ($artist) => $artist['name'], $trackData['artists']),
+            'artists_data' => array_map(fn ($artist) => [
+                'name' => $artist['name'],
+                'spotify_id' => $artist['id'],
+            ], $trackData['artists']),
             'album' => $trackData['album']['name'] ?? null,
+            'album_data' => $trackData['album'] ? [
+                'name' => $trackData['album']['name'],
+                'spotify_id' => $trackData['album']['id'],
+                'album_art_url' => $this->getAlbumArtUrl($trackData['album']['images'] ?? []),
+            ] : null,
             'album_art_url' => $this->getAlbumArtUrl($trackData['album']['images'] ?? []),
             'duration_ms' => $trackData['duration_ms'] ?? null,
             'spotify_url' => $trackData['external_urls']['spotify'] ?? $url,
