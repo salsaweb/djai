@@ -36,4 +36,20 @@ export interface User {
     updated_at: string;
 }
 
+export interface Track {
+    id: number;
+    user_id: number;
+    spotify_id: string;
+    name: string;
+    artists: string[];
+    album: string | null;
+    album_art_url: string | null;
+    duration_ms: number | null;
+    spotify_url: string;
+    preview_url: string | null;
+    created_at: string;
+    updated_at: string;
+    related_tracks?: Track[];
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;
