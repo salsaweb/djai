@@ -851,7 +851,6 @@
             
 
             <Table>
-                <TableCaption>A list of your uploaded tracks.</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead class="w-[100px]">Cover</TableHead>

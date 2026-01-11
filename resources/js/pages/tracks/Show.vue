@@ -174,6 +174,55 @@
                                 <div>
                                     <span class="font-medium">Duration:</span> {{ formatDuration(track.duration_ms) }}
                                 </div>
+                                <div v-if="track.bpm">
+                                    <span class="font-medium">BPM:</span> {{ track.bpm }}
+                                </div>
+                                <div v-if="track.camelot">
+                                    <span class="font-medium">Camelot:</span> {{ track.camelot }}
+                                </div>
+                                <div v-if="track.energy">
+                                    <span class="font-medium">Energy:</span> {{ track.energy }}
+                                </div>
+                                <div v-if="track.popularity">
+                                    <span class="font-medium">Popularity:</span> {{ track.popularity }}
+                                </div>
+                                <div v-if="track.genres">
+                                    <span class="font-medium">Genres:</span> {{ track.genres }}
+                                </div>
+                                <div v-if="track.parent_genres">
+                                    <span class="font-medium">Parent Genres:</span> {{ track.parent_genres }}
+                                </div>
+                                <div v-if="track.dance">
+                                    <span class="font-medium">Dance:</span> {{ track.dance }}
+                                </div>
+                                <div v-if="track.acoustic">
+                                    <span class="font-medium">Acoustic:</span> {{ track.acoustic }}
+                                </div>
+                                <div v-if="track.instrumental">
+                                    <span class="font-medium">Instrumental:</span> {{ track.instrumental }}
+                                </div>
+                                <div v-if="track.valence">
+                                    <span class="font-medium">Valence:</span> {{ track.valence }}
+                                </div>
+                                <div v-if="track.speech">
+                                    <span class="font-medium">Speech:</span> {{ track.speech }}
+                                </div>
+                                <div v-if="track.live">
+                                    <span class="font-medium">Live:</span> {{ track.live }}
+                                </div>
+                                <div v-if="track.loud_db">
+                                    <span class="font-medium">Loud db:</span> {{ track.loud_db }}
+                                </div>
+                                <div v-if="track.key">
+                                    <span class="font-medium">Key:</span> {{ track.key }}
+                                </div>
+                                <div v-if="track.time_signature">
+                                    <span class="font-medium">Time Signature:</span> {{ track.time_signature }}
+                                </div>
+                                <div v-if="track.label">
+                                    <span class="font-medium">Label:</span> {{ track.label }}
+                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -207,6 +256,9 @@
                         </div>
                         <div>
                             <span class="font-medium">Added:</span> {{ new Date(track.created_at).toLocaleDateString() }}
+                        </div>
+                        <div>
+                            <span class="font-medium">ISRC:</span> {{ track.isrc }}
                         </div>
                     </div>
                 </CardContent>

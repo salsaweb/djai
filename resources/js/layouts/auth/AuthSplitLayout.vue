@@ -20,7 +20,10 @@ defineProps<{
         <div
             class="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r"
         >
-            <div class="absolute inset-0 bg-zinc-900" />
+            <div class="absolute inset-0">
+                <img src="img/unsplash.jpg" alt="" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-black/75" />
+            </div>
             <Link
                 :href="home()"
                 class="relative z-20 flex items-center text-lg font-medium"
