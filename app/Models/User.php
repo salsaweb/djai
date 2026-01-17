@@ -58,4 +58,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Track::class);
     }
+
+    /**
+     * Get the playlists for the user.
+     */
+    public function playlists(): HasMany
+    {
+        return $this->hasMany(Playlist::class);
+    }
 }

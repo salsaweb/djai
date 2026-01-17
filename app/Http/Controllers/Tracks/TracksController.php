@@ -330,7 +330,9 @@ class TracksController extends Controller
     {
         // Ensure the track belongs to the authenticated user
         $track = auth()->user()->tracks()
-            ->with(['relatedTracks', 'relatedTo', 'artistsRelation', 'albumRelation'])
+            ->with(['relatedTracks', 'relatedTo', 'artistsRelation', 'albumRelation', 'playlists' => function ($query) {
+                $query->withCount('tracks');
+            }])
             ->findOrFail($track->id);
 
         // Merge both directions of relationships and ensure we don't include the track itself

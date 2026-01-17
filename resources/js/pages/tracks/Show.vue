@@ -292,17 +292,17 @@
                                     <div class="grid flex-1 auto-rows-min gap-6 px-4">
                                         <div class="grid gap-3">
                                             <Label for="url">Spotify URL</Label>
-                                            <Input 
-                                                id="url" 
-                                                type="text" 
+                                            <Input
+                                                id="url"
+                                                type="text"
                                                 v-model="importForm.url"
                                                 placeholder="https://open.spotify.com/track/1234567890"
                                                 :class="{ 'border-red-500': importForm.errors.url }"
                                             />
                                             <InputError :message="importForm.errors.url" />
                                         </div>
-                                    </div> 
-                                    
+                                    </div>
+
                                     <SheetFooter>
                                         <div class="w-full p-4 flex justify-between">
                                             <Button
@@ -360,6 +360,47 @@
                     <div v-else class="text-center py-8 text-muted-foreground">
                         <p>No related tracks yet.</p>
                         <p class="text-sm mt-2">Import a track to add it as a related track.</p>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <!-- Related Playlists Section -->
+            <Card>
+                <CardHeader>
+                    <CardTitle>Related Playlists</CardTitle>
+                    <CardDescription>
+                        Playlists that contain this track
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div v-if="track.playlists && track.playlists.length > 0" class="space-y-4">
+                        <div
+                            v-for="playlist in track.playlists"
+                            :key="playlist.id"
+                            class="flex items-center gap-4 p-4 border rounded-lg hover:bg-accent transition-colors"
+                        >
+                            <img
+                                v-if="playlist.cover_art_url"
+                                :src="playlist.cover_art_url"
+                                :alt="playlist.name"
+                                class="w-16 h-16 rounded object-cover"
+                            />
+                            <div class="flex-1 min-w-0">
+                                <Link :href="`/playlists/${playlist.id}`" class="block">
+                                    <h3 class="font-semibold truncate">{{ playlist.name }}</h3>
+                                    <p class="text-sm text-muted-foreground">
+                                        {{ playlist.tracks_count || 0 }} tracks
+                                    </p>
+                                </Link>
+                            </div>
+                            <div class="text-sm text-muted-foreground">
+                                Position: {{ playlist.pivot?.position ? playlist.pivot.position + 1 : 'N/A' }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="text-center py-8 text-muted-foreground">
+                        <p>This track is not in any playlists yet.</p>
+                        <p class="text-sm mt-2">Add this track to playlists to see them here.</p>
                     </div>
                 </CardContent>
             </Card>

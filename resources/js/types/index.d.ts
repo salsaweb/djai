@@ -53,6 +53,21 @@ export interface Album {
     updated_at: string;
 }
 
+export interface Playlist {
+    id: number;
+    user_id: number;
+    name: string;
+    description: string | null;
+    is_public: boolean;
+    cover_art_url: string | null;
+    tracks_count?: number;
+    created_at: string;
+    updated_at: string;
+    pivot?: {
+        position: number;
+    };
+}
+
 export interface Track {
     id: number;
     user_id: number;
@@ -70,6 +85,7 @@ export interface Track {
     related_tracks?: Track[];
     artists_relation?: Artist[];
     album_relation?: Album;
+    playlists?: Playlist[];
     bpm?: number | null;
     camelot?: string | null;
     energy?: number | null;

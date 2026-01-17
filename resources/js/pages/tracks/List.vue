@@ -6,7 +6,6 @@
     import {
         Table,
         TableBody,
-        TableCaption,
         TableCell,
         TableHead,
         TableHeader,
@@ -43,7 +42,7 @@
     import { Input } from '@/components/ui/input';
     import { Label } from '@/components/ui/label';
     import InputError from '@/components/InputError.vue';
-    import { PlusIcon, XCircle, CheckCircle2, AlertCircle, Eye, Trash2, X, Filter, ChevronDown } from 'lucide-vue-next';
+    import { PlusIcon, XCircle, CheckCircle2, Eye, Trash2, X, Filter, ChevronDown } from 'lucide-vue-next';
     import { type Track, type Artist, type Album } from '@/types';
     import { ref, computed, watch } from 'vue';
     import {

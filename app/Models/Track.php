@@ -108,4 +108,14 @@ class Track extends Model
             'track_id'
         )->withTimestamps();
     }
+
+    /**
+     * Get the playlists that contain this track.
+     */
+    public function playlists(): BelongsToMany
+    {
+        return $this->belongsToMany(Playlist::class, 'playlist_track')
+            ->withPivot('position')
+            ->withTimestamps();
+    }
 }

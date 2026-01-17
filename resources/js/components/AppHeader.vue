@@ -34,10 +34,11 @@ import { getInitials } from '@/composables/useInitials';
 import { toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import { edit } from '@/routes/tracks';
+import { index } from '@/routes/playlists';
 import type { BreadcrumbItem, NavItem } from '@/types';
 import type { InertiaLinkProps } from '@inertiajs/vue3';
 import { Link, usePage } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-vue-next';
+import { BookOpen, Folder, LayoutGrid, Menu, Search, AudioLines, ListMusic } from 'lucide-vue-next';
 import { computed } from 'vue';
 
 interface Props {
@@ -67,7 +68,12 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Tracks',
         href: edit(),
-        icon: LayoutGrid,
+        icon: AudioLines,
+    },
+    {
+        title: 'Playlists',
+        href: index(),
+        icon: ListMusic,
     },
 ];
 
